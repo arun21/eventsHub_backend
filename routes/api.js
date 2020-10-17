@@ -11,7 +11,7 @@ const db =
   "mongodb+srv://user_test:password_test@events.sms68.mongodb.net/eventsdb?retryWrites=true&w=majority";
 
 const saltRounds = 10;
-const news_url = `https://newsapi.org/v2/top-headlines?country=in&apiKey=${process.env.NEWS_API_KEY}`;
+const news_url = `https://newsapi.org/v2/top-headlines?country=ca&apiKey=${process.env.NEWS_API_KEY}`;
 
 mongoose.connect(db, (err) => {
   if (err) {
@@ -115,7 +115,7 @@ router.get("/top-events", async (req, res) => {
 });
 
 router.get("/top-headlines", async (req, res) => {
-  const country = req.query.code || 'in';
+  const country = req.query.code || 'ca';
   const top_headlines = `https://newsapi.org/v2/top-headlines?country=${country}&apiKey=${process.env.NEWS_API_KEY}`;
   
   const data = await fetch(top_headlines)
